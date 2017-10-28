@@ -37,16 +37,19 @@ class smartphoto_admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_assets' ) );
 
 		$this->add_assets();
-		if ( isset( $_POST['smartphoto_options'] ) ) {
-			$post = $_POST['smartphoto_options'];
+		$post = filter_input( INPUT_POST, 'smartphoto_options' );
+		if ( ! empty( $post ) && check_admin_referer( 'save_options','wp_smartphoto_nonce_field' ) ) {
 			update_option( 'smartphoto_options', $post );
 		}
+
+
 		$opt = $this->get_options();
 		?>
 			<div class="hero is-center is-gradation">
 				<h1 class="type-large" style="color:#FFF;">SmartPhoto</h1>
 			</div>
 			<form method="post" action="#" enctype="multipart/form-data" class="table">
+				<?php wp_nonce_field( 'save_options','wp_smartphoto_nonce_field' ); ?>
 				<div class="grid is-col-2">
 				<div>
 					<table>
