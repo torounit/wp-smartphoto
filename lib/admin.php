@@ -3,6 +3,7 @@
 class smartphoto_admin {
 	function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_pages' ) );
+		add_action( 'plugins_loaded', array( $this, 'initialize_options' ) );
 	}
 	function add_pages() {
 		add_theme_page( 'SmartPhoto', 'SmartPhoto', 'edit_theme_options', 'SmartPhoto', array( $this, 'show_page' ) );
@@ -14,20 +15,22 @@ class smartphoto_admin {
 		wp_add_inline_style( 'smartphoto-admin-style', $custom_css );
 		wp_enqueue_style( 'smartphoto-admin-style' );
 	}
+
+	public function initialize_options() {
+		$options['arrows'] = 'true';
+		$options['nav'] = 'true';
+		$options['animationSpeed'] = 300;
+		$options['swipeOffset'] = 100;
+		$options['forceInterval'] = 10;
+		$options['registance'] = 0.5;
+		$options['resizeStyle'] = 'fill';
+		$options['verticalGravity'] = 'false';
+		$options['useOrientationApi'] = 'true';
+		add_option( 'smartphoto_options', $options );
+	}
+
 	function get_options() {
 		$options = get_option( 'smartphoto_options' );
-		if ( ! is_array( $options ) ) {
-			$options['arrows'] = 'true';
-			$options['nav'] = 'true';
-			$options['animationSpeed'] = 300;
-			$options['swipeOffset'] = 100;
-			$options['forceInterval'] = 10;
-			$options['registance'] = 0.5;
-			$options['resizeStyle'] = 'fill';
-			$options['verticalGravity'] = 'false';
-			$options['useOrientationApi'] = 'true';
-			update_option( 'smartphoto_options', $options );
-		}
 		return $options;
 	}
 	function show_page() {
