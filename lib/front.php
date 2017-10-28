@@ -8,6 +8,8 @@ class smartphoto_front {
 	}
 	function add_assets() {
 		wp_enqueue_script( 'smartphoto-js', plugins_url( 'assets/smartphoto.min.js', __FILE__ ) );
+		$options = get_option( 'smartphoto_options', array() );
+		wp_localize_script( 'smartphoto-js', 'wp_smartphoto', $options );
 		wp_enqueue_style( 'smartphoto-css', plugins_url( 'assets/smartphoto.min.css', __FILE__ ) );
 	}
 	function change_content( $content ) {
@@ -28,21 +30,7 @@ class smartphoto_front {
 		</style>
 		<script>
 			document.addEventListener('DOMContentLoaded',function(){
-			<?php if ( ! is_array( $options ) ) { ?>
-				new smartPhoto('.js-smartPhoto');
-			<?php } else { ?>
-				new smartPhoto('.js-smartPhoto',{
-					nav: <?php echo esc_js( $options['nav'] ); ?>,
-					arrows: <?php echo esc_js( $options['arrows'] ); ?>,
-					animationSpeed: <?php echo esc_js( $options['animationSpeed'] ); ?>,
-					swipeOffset: <?php echo esc_js( $options['swipeOffset'] ); ?>,
-					forceInterval: <?php echo esc_js( $options['forceInterval'] ); ?>,
-					registance: <?php echo esc_js( $options['registance'] ); ?>,
-					resizeStyle: '<?php echo esc_js( $options['resizeStyle'] ); ?>',
-					verticalGravity: <?php echo esc_js( $options['verticalGravity'] ); ?>,
-					useOrientationApi: <?php echo esc_js( $options['useOrientationApi'] ); ?>
-				});
-			<?php } ?>
+				new smartPhoto('.js-smartPhoto', wp_smartphoto );
 			});
 		</script>
 		<?php
