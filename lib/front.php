@@ -32,15 +32,15 @@ class smartphoto_front {
 				new smartPhoto('.js-smartPhoto');
 			<?php } else { ?>
 				new smartPhoto('.js-smartPhoto',{
-					nav: <?php echo $options['nav']; ?>,
-					arrows: <?php echo $options['arrows']; ?>,
-					animationSpeed: <?php echo $options['animationSpeed']; ?>,
-					swipeOffset: <?php echo $options['swipeOffset']; ?>,
-					forceInterval: <?php echo $options['forceInterval']; ?>,
-					registance: <?php echo $options['registance']; ?>,
-					resizeStyle: '<?php echo $options['resizeStyle']; ?>',
-					verticalGravity: <?php echo $options['verticalGravity']; ?>,
-					useOrientationApi: <?php echo $options['useOrientationApi']; ?>
+					nav: <?php echo esc_js( $options['nav'] ); ?>,
+					arrows: <?php echo esc_js( $options['arrows'] ); ?>,
+					animationSpeed: <?php echo esc_js( $options['animationSpeed'] ); ?>,
+					swipeOffset: <?php echo esc_js( $options['swipeOffset'] ); ?>,
+					forceInterval: <?php echo esc_js( $options['forceInterval'] ); ?>,
+					registance: <?php echo esc_js( $options['registance'] ); ?>,
+					resizeStyle: '<?php echo esc_js( $options['resizeStyle'] ); ?>',
+					verticalGravity: <?php echo esc_js( $options['verticalGravity'] ); ?>,
+					useOrientationApi: <?php echo esc_js( $options['useOrientationApi'] ); ?>
 				});
 			<?php } ?>
 			});
