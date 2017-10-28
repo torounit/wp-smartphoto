@@ -117,19 +117,19 @@ class smartphoto_admin {
 					<table>
 						<tr>
 							<th>animationSpeed</th>
-							<td><input class="input" type="number" name="smartphoto_options[animationSpeed]" value="<?php echo $opt['animationSpeed']; ?>"></td>
+							<td><input class="input" type="number" name="smartphoto_options[animationSpeed]" value="<?php echo esc_attr( $opt['animationSpeed'] ); ?>"></td>
 						</tr>
 						<tr>
 							<th>swipeOffset</th>
-							<td><input class="input" type="number" name="smartphoto_options[swipeOffset]" value="<?php echo $opt['swipeOffset']; ?>"></td>
+							<td><input class="input" type="number" name="smartphoto_options[swipeOffset]" value="<?php echo esc_attr( $opt['swipeOffset'] ); ?>"></td>
 						</tr>
 						<tr>
 							<th>forceInterval</th>
-							<td><input class="input" type="number" name="smartphoto_options[forceInterval]" value="<?php echo $opt['forceInterval']; ?>"></td>
+							<td><input class="input" type="number" name="smartphoto_options[forceInterval]" value="<?php echo esc_attr( $opt['forceInterval'] ); ?>"></td>
 						</tr>
 						<tr>
 							<th>registance</th>
-							<td><input class="input" type="number" name="smartphoto_options[registance]" value="<?php echo $opt['registance']; ?>"></td>
+							<td><input class="input" type="number" name="smartphoto_options[registance]" value="<?php echo esc_attr( $opt['registance'] ); ?>"></td>
 						</tr>
 						<tr>
 							<td colspan="2"><input type="submit" name="Submit" value="Save" class="button"/></td>
