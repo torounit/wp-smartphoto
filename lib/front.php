@@ -1,6 +1,6 @@
 <?php
 
-class smartphoto_front {
+class Smartphoto_Front {
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_assets' ) );
 		add_filter( 'the_content', array( $this, 'change_content' ) );
@@ -26,4 +26,3 @@ class smartphoto_front {
 	}
 }
 
-new smartphoto_front();

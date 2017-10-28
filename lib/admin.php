@@ -1,6 +1,6 @@
 <?php
 
-class smartphoto_admin {
+class Smartphoto_Admin {
 	function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_pages' ) );
 		add_action( 'plugins_loaded', array( $this, 'initialize_options' ) );
@@ -148,4 +148,3 @@ class smartphoto_admin {
 	}
 }
 
-new smartphoto_admin();
