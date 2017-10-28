@@ -50,86 +50,65 @@ class smartphoto_admin {
 						<tr>
 							<th>arrows</th>
 							<td>
-								<label class="input is-radio"><input type="radio" name="smartphoto_options[arrows]" value="true"
-								<?php
-								if ( $opt[ arrows ] === 'true' ) {
-									echo 'checked';}
-?>
- /><span>true</span></label>
-								<label class="input is-radio"><input type="radio" name="smartphoto_options[arrows]" value="false"
-								<?php
-								if ( $opt[ arrows ] === 'false' ) {
-									echo 'checked';}
-?>
- /><span>false</span></label>
+								<label class="input is-radio">
+									<input type="radio" name="smartphoto_options[arrows]" value="true" <?php checked( $opt['arrows'], true ); ?> />
+									<span>true</span>
+								</label>
+								<label class="input is-radio">
+									<input type="radio" name="smartphoto_options[arrows]" value="false" <?php checked( $opt['arrows'], false ); ?> />
+									<span>false</span>
+								</label>
 							</td>
 						</tr>
 						<tr>
 							<th>nav</th>
 							<td>
-								<label class="input is-radio"><input type="radio" name="smartphoto_options[nav]" value="true"
-								<?php
-								if ( $opt[ nav ] === 'true' ) {
-									echo 'checked';}
-?>
- /><span>true</span></label>
-								<label class="input is-radio"><input type="radio" name="smartphoto_options[nav]" value="false"
-								<?php
-								if ( $opt[ nav ] === 'false' ) {
-									echo 'checked';}
-?>
- /><span>false</span></label>
+								<label class="input is-radio">
+									<input type="radio" name="smartphoto_options[nav]" value="true" <?php checked( $opt['nav'], true ); ?>/>
+									<span>true</span>
+								</label>
+								<label class="input is-radio">
+									<input type="radio" name="smartphoto_options[nav]" value="false" <?php checked( $opt['nav'], false ); ?>/>
+									<span>false</span>
+								</label>
 							</td>
 						</tr>
 						<tr>
 							<th>resizeStyle</th>
 							<td>
-								<label class="input is-radio"><input type="radio" name="smartphoto_options[resizeStyle]" value="fill"
-								<?php
-								if ( $opt[ resizeStyle ] === 'fill' ) {
-									echo 'checked';}
-?>
- /><span>fill</span></label>
-								<label class="input is-radio"><input type="radio" name="smartphoto_options[resizeStyle]" value="fit"
-								<?php
-								if ( $opt[ resizeStyle ] === 'fit' ) {
-									echo 'checked';}
-?>
- /><span>fit</span></label>
+								<label class="input is-radio">
+									<input type="radio" name="smartphoto_options[resizeStyle]" value="fill" <?php checked( $opt['resizeStyle'], 'fill' ); ?> />
+									<span>fill</span></label>
+								<label class="input is-radio">
+									<input type="radio" name="smartphoto_options[resizeStyle]" value="fit" <?php checked( $opt['resizeStyle'], 'fit' ); ?> />
+									<span>fit</span>
+								</label>
 							</td>
 						</tr>
 						<tr>
 							<th>useOrientationApi</th>
 							<td>
-								<label class="input is-radio"><input type="radio" name="smartphoto_options[useOrientationApi]" value="true"
-								<?php
-								if ( $opt[ useOrientationApi ] === 'true' ) {
-									echo 'checked';}
-?>
- /><span>true</span></label>
-								<label class="input is-radio"><input type="radio" name="smartphoto_options[useOrientationApi]" value="false"
-								<?php
-								if ( $opt[ useOrientationApi ] === 'false' ) {
-									echo 'checked';}
-?>
- /><span>false</span></label>
+								<label class="input is-radio">
+									<input type="radio" name="smartphoto_options[useOrientationApi]" value="true" <?php checked( $opt['useOrientationApi'], 'true' ); ?>/>
+									<span>true</span>
+								</label>
+								<label class="input is-radio">
+									<input type="radio" name="smartphoto_options[useOrientationApi]" value="false" <?php checked( $opt['useOrientationApi'], 'false' ); ?>/>
+									<span>false</span>
+								</label>
 							</td>
 						</tr>
 						<tr>
 							<th>verticalGravity</th>
 							<td>
-								<label class="input is-radio"><input type="radio" name="smartphoto_options[verticalGravity]" value="true"
-								<?php
-								if ( $opt[ verticalGravity ] === 'true' ) {
-									echo 'checked';}
-?>
- /><span>true</span></label>
-								<label class="input is-radio"><input type="radio" name="smartphoto_options[verticalGravity]" value="false"
-								<?php
-								if ( $opt[ verticalGravity ] === 'false' ) {
-									echo 'checked';}
-?>
- /><span>false</span></label>
+								<label class="input is-radio">
+									<input type="radio" name="smartphoto_options[verticalGravity]" value="true" <?php checked( $opt['verticalGravity'], 'true' ); ?>/>
+									<span>true</span>
+								</label>
+								<label class="input is-radio">
+									<input type="radio" name="smartphoto_options[verticalGravity]" value="false" <?php checked( $opt['verticalGravity'], 'false' ); ?>/>
+									<span>false</span>
+								</label>
 							</td>
 						</tr>
 					</table>
@@ -157,7 +136,7 @@ class smartphoto_admin {
 						</tr>
 					</table>
 				</div>
-				</div>	
+				</div>
 			</form>
 		<?php
 	}
