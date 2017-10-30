@@ -5,9 +5,11 @@ class Smartphoto_Admin {
 		add_action( 'admin_menu', array( $this, 'add_pages' ) );
 		add_action( 'plugins_loaded', array( $this, 'initialize_options' ) );
 	}
+
 	function add_pages() {
 		add_theme_page( 'SmartPhoto', 'SmartPhoto', 'edit_theme_options', 'SmartPhoto', array( $this, 'show_page' ) );
 	}
+
 	function add_assets() {
 		$custom_css = '#wpcontent {padding-left: 0;}.grid > * {box-sizing:border-box;}';
 		wp_enqueue_style( 'uny-css', plugins_url( 'assets/uny.min.css', __FILE__ ) );
@@ -17,22 +19,24 @@ class Smartphoto_Admin {
 	}
 
 	public function initialize_options() {
-		$options['arrows'] = 'true';
-		$options['nav'] = 'true';
-		$options['animationSpeed'] = 300;
-		$options['swipeOffset'] = 100;
-		$options['forceInterval'] = 10;
-		$options['registance'] = 0.5;
-		$options['resizeStyle'] = 'fill';
-		$options['verticalGravity'] = 'false';
+		$options['arrows']            = 'true';
+		$options['nav']               = 'true';
+		$options['animationSpeed']    = 300;
+		$options['swipeOffset']       = 100;
+		$options['forceInterval']     = 10;
+		$options['registance']        = 0.5;
+		$options['resizeStyle']       = 'fill';
+		$options['verticalGravity']   = 'false';
 		$options['useOrientationApi'] = 'true';
 		add_option( 'smartphoto_options', $options );
 	}
 
 	function get_options() {
 		$options = get_option( 'smartphoto_options' );
+
 		return $options;
 	}
+
 	function show_page() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_assets' ) );
 
@@ -42,15 +46,15 @@ class Smartphoto_Admin {
 			update_option( 'smartphoto_options', $post );
 		}
 
-
 		$opt = $this->get_options();
 		?>
-			<div class="hero is-center is-gradation">
-				<h1 class="type-large" style="color:#FFF;">SmartPhoto</h1>
-			</div>
-			<form method="post" action="#" enctype="multipart/form-data" class="table">
-				<?php wp_nonce_field( 'save_options','wp_smartphoto_nonce_field' ); ?>
-				<div class="grid is-col-2">
+
+		<div class="hero is-center is-gradation">
+			<h1 class="type-large" style="color:#FFF;">SmartPhoto</h1>
+		</div>
+		<form method="post" action="#" enctype="multipart/form-data" class="table">
+			<?php wp_nonce_field( 'save_options', 'wp_smartphoto_nonce_field' ); ?>
+			<div class="grid is-col-2">
 				<div>
 					<table>
 						<tr>
@@ -87,10 +91,12 @@ class Smartphoto_Admin {
 							<th>resizeStyle</th>
 							<td>
 								<label class="input is-radio">
-									<input type="radio" name="smartphoto_options[resizeStyle]" value="fill" <?php checked( $opt['resizeStyle'], 'fill' ); ?> />
+									<input type="radio" name="smartphoto_options[resizeStyle]"
+									       value="fill" <?php checked( $opt['resizeStyle'], 'fill' ); ?> />
 									<span>fill</span></label>
 								<label class="input is-radio">
-									<input type="radio" name="smartphoto_options[resizeStyle]" value="fit" <?php checked( $opt['resizeStyle'], 'fit' ); ?> />
+									<input type="radio" name="smartphoto_options[resizeStyle]"
+									       value="fit" <?php checked( $opt['resizeStyle'], 'fit' ); ?> />
 									<span>fit</span>
 								</label>
 							</td>
@@ -99,11 +105,13 @@ class Smartphoto_Admin {
 							<th>useOrientationApi</th>
 							<td>
 								<label class="input is-radio">
-									<input type="radio" name="smartphoto_options[useOrientationApi]" value="true" <?php checked( $opt['useOrientationApi'], 'true' ); ?>/>
+									<input type="radio" name="smartphoto_options[useOrientationApi]"
+									       value="true" <?php checked( $opt['useOrientationApi'], 'true' ); ?>/>
 									<span>true</span>
 								</label>
 								<label class="input is-radio">
-									<input type="radio" name="smartphoto_options[useOrientationApi]" value="false" <?php checked( $opt['useOrientationApi'], 'false' ); ?>/>
+									<input type="radio" name="smartphoto_options[useOrientationApi]"
+									       value="false" <?php checked( $opt['useOrientationApi'], 'false' ); ?>/>
 									<span>false</span>
 								</label>
 							</td>
@@ -112,11 +120,13 @@ class Smartphoto_Admin {
 							<th>verticalGravity</th>
 							<td>
 								<label class="input is-radio">
-									<input type="radio" name="smartphoto_options[verticalGravity]" value="true" <?php checked( $opt['verticalGravity'], 'true' ); ?>/>
+									<input type="radio" name="smartphoto_options[verticalGravity]"
+									       value="true" <?php checked( $opt['verticalGravity'], 'true' ); ?>/>
 									<span>true</span>
 								</label>
 								<label class="input is-radio">
-									<input type="radio" name="smartphoto_options[verticalGravity]" value="false" <?php checked( $opt['verticalGravity'], 'false' ); ?>/>
+									<input type="radio" name="smartphoto_options[verticalGravity]"
+									       value="false" <?php checked( $opt['verticalGravity'], 'false' ); ?>/>
 									<span>false</span>
 								</label>
 							</td>
@@ -127,27 +137,31 @@ class Smartphoto_Admin {
 					<table>
 						<tr>
 							<th>animationSpeed</th>
-							<td><input class="input" type="number" name="smartphoto_options[animationSpeed]" value="<?php echo esc_attr( $opt['animationSpeed'] ); ?>"></td>
+							<td><input class="input" type="number" name="smartphoto_options[animationSpeed]"
+							           value="<?php echo esc_attr( $opt['animationSpeed'] ); ?>"></td>
 						</tr>
 						<tr>
 							<th>swipeOffset</th>
-							<td><input class="input" type="number" name="smartphoto_options[swipeOffset]" value="<?php echo esc_attr( $opt['swipeOffset'] ); ?>"></td>
+							<td><input class="input" type="number" name="smartphoto_options[swipeOffset]"
+							           value="<?php echo esc_attr( $opt['swipeOffset'] ); ?>"></td>
 						</tr>
 						<tr>
 							<th>forceInterval</th>
-							<td><input class="input" type="number" name="smartphoto_options[forceInterval]" value="<?php echo esc_attr( $opt['forceInterval'] ); ?>"></td>
+							<td><input class="input" type="number" name="smartphoto_options[forceInterval]"
+							           value="<?php echo esc_attr( $opt['forceInterval'] ); ?>"></td>
 						</tr>
 						<tr>
 							<th>registance</th>
-							<td><input class="input" type="number" name="smartphoto_options[registance]" value="<?php echo esc_attr( $opt['registance'] ); ?>"></td>
+							<td><input class="input" type="number" name="smartphoto_options[registance]"
+							           value="<?php echo esc_attr( $opt['registance'] ); ?>"></td>
 						</tr>
 						<tr>
 							<td colspan="2"><input type="submit" name="Submit" value="Save" class="button"/></td>
 						</tr>
 					</table>
 				</div>
-				</div>
-			</form>
+			</div>
+		</form>
 		<?php
 	}
 }
