@@ -37,8 +37,8 @@ class Smartphoto_Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_assets' ) );
 
 		$this->add_assets();
-		$post = filter_input( INPUT_POST, 'smartphoto_options' );
-		if ( ! empty( $post ) && check_admin_referer( 'save_options','wp_smartphoto_nonce_field' ) ) {
+		$post = filter_input( INPUT_POST, 'smartphoto_options', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		if ( ! empty( $post ) && check_admin_referer( 'save_options', 'wp_smartphoto_nonce_field' ) ) {
 			update_option( 'smartphoto_options', $post );
 		}
 
@@ -57,11 +57,13 @@ class Smartphoto_Admin {
 							<th>arrows</th>
 							<td>
 								<label class="input is-radio">
-									<input type="radio" name="smartphoto_options[arrows]" value="true" <?php checked( $opt['arrows'], true ); ?> />
+									<input type="radio" name="smartphoto_options[arrows]"
+									       value="true" <?php checked( $opt['arrows'], 'true' ); ?> />
 									<span>true</span>
 								</label>
 								<label class="input is-radio">
-									<input type="radio" name="smartphoto_options[arrows]" value="false" <?php checked( $opt['arrows'], false ); ?> />
+									<input type="radio" name="smartphoto_options[arrows]"
+									       value="false" <?php checked( $opt['arrows'], 'false' ); ?> />
 									<span>false</span>
 								</label>
 							</td>
@@ -70,11 +72,13 @@ class Smartphoto_Admin {
 							<th>nav</th>
 							<td>
 								<label class="input is-radio">
-									<input type="radio" name="smartphoto_options[nav]" value="true" <?php checked( $opt['nav'], true ); ?>/>
+									<input type="radio" name="smartphoto_options[nav]"
+									       value="true" <?php checked( $opt['nav'], 'true' ); ?>/>
 									<span>true</span>
 								</label>
 								<label class="input is-radio">
-									<input type="radio" name="smartphoto_options[nav]" value="false" <?php checked( $opt['nav'], false ); ?>/>
+									<input type="radio" name="smartphoto_options[nav]"
+									       value="false" <?php checked( $opt['nav'], 'false' ); ?>/>
 									<span>false</span>
 								</label>
 							</td>
